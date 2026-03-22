@@ -1,0 +1,502 @@
+<!DOCTYPE html> 
+<html lang="ar" dir="rtl"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>مبرد الهاتف المحمول الذكي | تبريد فوري فائق</title> 
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <!-- TikTok Pixel --> 
+    <script> 
+    !function (w, d, t) { 
+      w.TiktokAnalyticsObject=t; 
+      var ttq=w[t]=w[t]||[]; 
+      ttq.methods=["page","track"]; 
+      ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}; 
+      for(var i=0;i<ttq.methods.length;i++) ttq.setAndDefer(ttq,ttq.methods[i]); 
+      ttq.load('YOUR_PIXEL_ID'); // 👈 ضع هنا معرف TikTok Pixel الخاص بك
+      ttq.page(); 
+    }(window, document, 'ttq'); 
+    </script> 
+    
+    <style> 
+        :root {
+            --primary: #0066ff;
+            --primary-dark: #0052cc;
+            --accent: #ff3333;
+            --success: #00c853;
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background: #0f172a;
+            background-image: var(--bg-gradient);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        } 
+
+        .app-container { 
+            max-width: 480px;
+            margin: 0 auto;
+            background: #1e293b;
+            min-height: 100vh;
+            position: relative;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        } 
+
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Pulse Animation */
+        @keyframes pulse-red {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 51, 51, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255, 51, 51, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 51, 51, 0); }
+        }
+
+        header {
+            padding: 30px 20px;
+            text-align: center;
+            background: rgba(0,0,0,0.2);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .promo-badge {
+            background: var(--accent);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 13px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+            animation: pulse-red 2s infinite;
+        }
+
+        h1 { 
+            font-size: 26px;
+            font-weight: 900;
+            line-height: 1.3;
+            background: linear-gradient(to left, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        } 
+
+        .hero-section {
+            position: relative;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-image-container {
+            position: relative;
+            margin: 20px 0;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .hero-img { 
+            width: 100%; 
+            max-width: 350px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.1);
+        } 
+
+        .glow-effect {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background: var(--primary);
+            filter: blur(80px);
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .content-body {
+            padding: 0 25px 40px;
+        }
+
+        .problem-statement {
+            background: rgba(255, 51, 51, 0.1);
+            border-right: 4px solid var(--accent);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-size: 16px;
+            color: #ff9494;
+        }
+
+        .solution-highlight {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: var(--text-main);
+        }
+
+        .solution-highlight span {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-5px);
+        }
+
+        .feature-card i {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .feature-card span {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .product-gallery {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .gallery-img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .price-container {
+            background: rgba(255,255,255,0.03);
+            border-radius: 24px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .price-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .discount-badge-small {
+            background: var(--accent);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: var(--text-muted);
+            font-size: 20px;
+        }
+
+        .current-price {
+            font-size: 58px;
+            font-weight: 900;
+            color: #fff;
+            margin: 0;
+            line-height: 1;
+        }
+
+        .tax-info {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-top: -5px;
+            width: 100%;
+            text-align: left;
+            padding-left: 20%;
+        }
+
+        .currency {
+            font-size: 24px;
+            font-weight: 600;
+            margin-right: 5px;
+        }
+
+        .offer-tag {
+            color: var(--success);
+            font-weight: 700;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .cta-wrapper {
+            position: sticky;
+            bottom: 20px;
+            padding: 0 20px;
+            z-index: 100;
+        }
+
+        .cta-button { 
+            background: var(--primary); 
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white; 
+            padding: 20px; 
+            border: none; 
+            font-size: 20px; 
+            font-weight: 800;
+            border-radius: 16px; 
+            width: 100%;
+            cursor: pointer; 
+            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.4);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-decoration: none;
+        } 
+
+        .cta-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 102, 255, 0.6);
+        }
+
+        .cta-button:active {
+            transform: scale(0.98);
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .trust-item {
+            text-align: center;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .trust-item i {
+            display: block;
+            font-size: 20px;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+        }
+
+        .timer-bar {
+            background: #000;
+            color: #fff;
+            padding: 12px;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 20px;
+            border-radius: 12px;
+        }
+
+        .timer-bar b {
+            color: var(--accent);
+        }
+
+        /* Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style> 
+</head> 
+
+<body> 
+
+<div class="app-container"> 
+    <header>
+        <div class="promo-badge">
+            <i class="fas fa-fire"></i>
+            الأكثر مبيعاً في السعودية
+        </div>
+        <h1 class="animate__animated animate__fadeInDown">هل يعاني هاتفك من الحرارة أثناء اللعب؟</h1> 
+    </header>
+
+    <div class="hero-section">
+        <div class="product-image-container animate__animated animate__zoomIn">
+            <div class="glow-effect"></div>
+            <!-- 🖼️ ضع صورة المنتج هنا -->
+            <img src="images/product.png" class="hero-img" alt="مبرد الهاتف الذكي"> 
+        </div>
+    </div>
+
+    <div class="content-body">
+        <div class="problem-statement animate__animated animate__fadeInRight" style="animation-delay: 0.5s;">
+            😤 هل سئمت من تشنج الهاتف (اللاگ) وفقدان المتعة بسبب الحرارة الزائدة؟
+        </div>
+
+        <p class="solution-highlight reveal">
+            نقدم لك <span>المبرد الاحترافي X-Cool</span>، الحل النهائي لتبريد هاتفك في ثوانٍ معدودة والاستمتاع بأداء خارق!
+        </p> 
+
+        <div class="features-grid"> 
+            <div class="feature-card reveal">
+                <i class="fas fa-snowflake"></i>
+                <span>تبريد مائي فوري</span>
+            </div>
+            <div class="feature-card reveal">
+                <i class="fas fa-gamepad"></i>
+                <span>بدون لاگ (Lag)</span>
+            </div>
+            <div class="feature-card reveal">
+                <i class="fas fa-volume-mute"></i>
+                <span>صوت هادئ جداً</span>
+            </div>
+            <div class="feature-card reveal">
+                <i class="fas fa-mobile-alt"></i>
+                <span>يدعم كل الهواتف</span>
+            </div>
+        </div> 
+
+        <!-- Galerie d'images ajoutée -->
+        <div class="product-gallery reveal">
+            <img src="images/product-2.png" class="gallery-img" alt="مبرد هاتف أثناء اللعب">
+            <img src="images/product-3.jpg" class="gallery-img" alt="مبرد هاتف ذكي">
+            <img src="images/product.png" class="gallery-img" alt="مبرد هاتف احترافي">
+        </div>
+
+        <div class="price-container reveal">
+            <div class="price-row">
+                <div class="discount-badge-small">خصم 25%</div>
+                <span class="old-price">120.00</span>
+                <span class="current-price">90.00 <span class="currency">ريال</span></span>
+            </div>
+            <div class="tax-info">شامل الضريبة</div>
+            <div class="offer-tag">
+                <i class="fas fa-gift"></i>
+                اشتري 2 قطع بدل واحدة ووفر 13% + الدفع عند الاستلام
+            </div>
+        </div>
+
+        <div class="cta-wrapper animate__animated animate__fadeInUp" style="animation-delay: 1s;">
+            <button class="cta-button" onclick="buyNow()">
+                اطلب الآن
+                <i class="fas fa-arrow-left"></i>
+            </button> 
+        </div>
+        
+        <div class="trust-badges reveal">
+            <div class="trust-item">
+                <i class="fas fa-undo"></i>
+                إرجاع خلال 15 يوم
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-truck"></i>
+                توصيل سريع
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-headset"></i>
+                دعم 24/7
+            </div>
+        </div>
+
+        <div class="timer-bar reveal">
+            ⚠️ سارع بالحجز، ينتهي العرض خلال: <b id="countdown">14:59</b>
+        </div>
+    </div>
+</div> 
+
+<script> 
+function buyNow() { 
+    // TikTok Pixel Tracking
+    if(typeof ttq !== 'undefined') {
+        ttq.track('ClickButton'); 
+    }
+    
+    // 🔗 رابط المتجر الجديد
+    window.location.href = "https://2134719.dukan.shop/products/f821c7a476de45f593ecc077f56ddaf4"; 
+}
+
+// Countdown Timer Logic
+let time = 15 * 60;
+const countdownEl = document.getElementById('countdown');
+setInterval(() => {
+    let minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+    countdownEl.innerHTML = `${minutes}:${seconds}`;
+    time--;
+    if (time < 0) time = 15 * 60;
+}, 1000);
+
+// Reveal elements on scroll
+function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+    for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 150;
+        if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+        }
+    }
+}
+window.addEventListener("scroll", reveal);
+// Initial check
+reveal();
+</script> 
+
+</body> 
+</html>
